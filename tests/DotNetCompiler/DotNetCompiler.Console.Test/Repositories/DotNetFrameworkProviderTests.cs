@@ -27,9 +27,9 @@ namespace DotNetCompiler.Console.Test.Repositories
         }
 
         [Test]
-        public void GetDotNetVersion_ShouldContainsCSharpDotNet6Version_Test()
+        public void GetDotNetVersion_ShouldContainsCSharpDotNet8Version_Test()
         {
-            var netSixVersion = _dotNetFrameworkProvider.GetDotNetVersion("NET6", "CSharp");
+            var netSixVersion = _dotNetFrameworkProvider.GetDotNetVersion("NET8", "CSharp");
             Assert.That(netSixVersion, Is.Not.Null);
         }
 

@@ -12,14 +12,80 @@
 		<ProjectReference Include="..\Application\Application.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <None Update="Resources\Languages\CSharp\Versions\NET6\MetaData\nunit.framework.dll">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Resources\Languages\CSharp\Versions\NET6\MetaData\System.Collections.NonGeneric.dll">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Resources\Languages\CSharp\Versions\NET8\DefaultUsings.txt">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
+		<None Update="Resources\Languages\CSharp\Versions\NET6\DefaultUsings.txt">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET6\MetaData\netstandard.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET6\MetaData\nunit.framework.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET6\MetaData\System.Collections.Concurrent.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET6\MetaData\System.Collections.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET6\MetaData\System.Collections.Immutable.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET6\MetaData\System.Collections.NonGeneric.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET6\MetaData\System.Collections.Specialized.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET6\MetaData\System.Console.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET6\MetaData\System.Linq.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET6\MetaData\System.Linq.Expressions.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET6\MetaData\System.Runtime.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET6\MetaData\System.Text.Json.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET8\MetaData\netstandard.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET8\MetaData\nunit.framework.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET8\MetaData\System.Collections.Concurrent.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET8\MetaData\System.Collections.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET8\MetaData\System.Collections.Immutable.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET8\MetaData\System.Collections.NonGeneric.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET8\MetaData\System.Collections.Specialized.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET8\MetaData\System.Console.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET8\MetaData\System.Linq.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET8\MetaData\System.Linq.Expressions.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET8\MetaData\System.Runtime.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Languages\CSharp\Versions\NET8\DefaultUsings.txt">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 </Project>
