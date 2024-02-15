@@ -20,7 +20,7 @@ jobs:
       - name: build docker image for Web API
         run: |
           docker build -t silkroadprofessionals.azurecr.io/mra-dotnet-compiler:${{ steps.taggerDryRun.outputs.new_tag }} .
-        working-directory: ./src/DotNetCompiler/WebApi
+        working-directory: ./src
 
       - name: Publish Web API to ACR
         run: |
