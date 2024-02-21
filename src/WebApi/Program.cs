@@ -9,7 +9,7 @@ namespace WebApi;
 
 public class Program
 {
-    public async static Task Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var builder = CreateHostBuilder(args).Build();
 
