@@ -3,7 +3,9 @@ using Microsoft.Extensions.Hosting;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Builder;
-using MRA.Jobs.Web.AzureKeyVault;
+using MRA.Configurations.Initializer.Azure.AppConfig;
+using MRA.Configurations.Initializer.Azure.Insight;
+using MRA.Configurations.Initializer.Azure.KeyVault;
 
 namespace WebApi;
 
@@ -15,8 +17,13 @@ public class Program
 
         var webAppBuilder = WebApplication.CreateBuilder(args);
 
-        webAppBuilder.ConfigureAzureKeyVault();
-
+        if (webAppBuilder.Environment.IsProduction())
+        {
+            webAppBuilder.Configuration.ConfigureAzureKeyVault("MRAIdentity");
+            string appConfigConnectionString = webAppBuilder.Configuration["AppConfigConnectionString"];
+            webAppBuilder.Configuration.AddAzureAppConfig(appConfigConnectionString);
+            webAppBuilder.Logging.AddApiApplicationInsights(webAppBuilder.Configuration);
+        }
         await builder.RunAsync();
     }
 
