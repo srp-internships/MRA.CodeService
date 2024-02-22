@@ -3,7 +3,6 @@ using Domain.Entities;
 using Infrastructure.Persistence;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using WebApi;
 
 namespace Application.IntegrationTest
 {
