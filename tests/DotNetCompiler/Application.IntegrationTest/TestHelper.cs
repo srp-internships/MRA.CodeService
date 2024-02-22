@@ -2,29 +2,19 @@
 using Domain.Entities;
 using Infrastructure.Persistence;
 using MediatR;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WebApi;
 
 namespace Application.IntegrationTest
 {
     [SetUpFixture]
     public class TestHelper
     {
-        private static IConfigurationRoot _configuration;
         private static IServiceScopeFactory _scopeFactory;
         [OneTimeSetUp]
         public void RunApplication()
         {
-            var builder = new ConfigurationBuilder()
-           .SetBasePath(Directory.GetCurrentDirectory())
-           .AddJsonFile("appsettings.Development.Test.json", true, true)
-           .AddEnvironmentVariables();
-            _configuration = builder.Build();
-            var startup = new Startup(_configuration);
-            var services = new ServiceCollection();
-            startup.ConfigureServices(services);
-            _scopeFactory = services.BuildServiceProvider().GetRequiredService<IServiceScopeFactory>();
+            var factory = new CustomWebApplicationFactory();
+            _scopeFactory = factory.Services.CreateScope().ServiceProvider.GetRequiredService<IServiceScopeFactory>();
         }
 
         public static async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request)
