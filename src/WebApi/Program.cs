@@ -1,33 +1,51 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using System.Threading.Tasks;
+﻿using Application;
+using Application.Common;
+using Infrastructure;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using MRA.Configurations.Initializer.Azure.AppConfig;
 using MRA.Configurations.Initializer.Azure.Insight;
 using MRA.Configurations.Initializer.Azure.KeyVault;
+using WebApi;
+using DependencyInjection = WebApi.DependencyInjection;
 
-namespace WebApi;
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-public class Program
+if (builder.Environment.IsProduction())
 {
-    public static async Task Main(string[] args)
-    {
-        var builder = CreateHostBuilder(args).Build();
-
-        var webAppBuilder = WebApplication.CreateBuilder(args);
-
-        if (webAppBuilder.Environment.IsProduction())
-        {
-            webAppBuilder.Configuration.ConfigureAzureKeyVault("MraCodeService");
-            string appConfigConnectionString = webAppBuilder.Configuration["AppConfigConnectionString"];
-            webAppBuilder.Configuration.AddAzureAppConfig(appConfigConnectionString);
-            webAppBuilder.Logging.AddApiApplicationInsights(webAppBuilder.Configuration);
-        }
-
-        await builder.RunAsync();
-    }
-
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
-            webBuilder.UseStartup<Startup>());
+    builder.Configuration.ConfigureAzureKeyVault("MRAIdentity");
+    string appConfigConnectionString = builder.Configuration["AppConfigConnectionString"];
+    builder.Configuration.AddAzureAppConfig(appConfigConnectionString);
+    builder.Logging.AddApiApplicationInsights(builder.Configuration);
 }
+
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApiServices(builder.Configuration);
+
+var app = builder.Build();
+
+app.UseRouting();
+
+if (app.Environment.IsDevelopment())
+{
+    // Configure the HTTP request pipeline.
+    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.UseCors(DependencyInjection.POLICY_NAME);
+// app.UseEndpoints(routeBuilder => { routeBuilder.MapControllers(); });
+
+// Initialize and seed database
+using (var scope = app.Services.CreateScope())
+{
+    var initializer = scope.ServiceProvider.GetRequiredService<IApplicationDbContextInitializer>();
+    initializer.Initialize();
+}
+
+app.Run();
