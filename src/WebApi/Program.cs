@@ -24,23 +24,11 @@ public class Program
             webAppBuilder.Configuration.AddAzureAppConfig(appConfigConnectionString);
             webAppBuilder.Logging.AddApiApplicationInsights(webAppBuilder.Configuration);
         }
+
         await builder.RunAsync();
     }
 
     public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-        .ConfigureLogging((context, builder) =>
-        {
-            if (!context.HostingEnvironment.IsDevelopment())
-            {
-                builder.AddApplicationInsights(
-              configureTelemetryConfiguration: (config) =>
-              {
-                  config.ConnectionString = context.Configuration["Logging:ApplicationInsights:ConnectionString"];
-              },
-              configureApplicationInsightsLoggerOptions: (options) => { });
-            }
-        })
-        .ConfigureWebHostDefaults(webBuilder =>
-                webBuilder.UseStartup<Startup>());
+        Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
+            webBuilder.UseStartup<Startup>());
 }
