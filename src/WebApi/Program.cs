@@ -39,7 +39,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseCors(DependencyInjection.POLICY_NAME);
-// app.UseEndpoints(routeBuilder => { routeBuilder.MapControllers(); });
 
 // Initialize and seed database
 using (var scope = app.Services.CreateScope())
